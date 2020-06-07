@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".controller.dataInput.dataInputCatchCons">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/activity_data_input_catch_cons_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/data_input_catch_cons_question"
+            android:textStyle="bold"
+            style="@android:style/TextAppearance.Large"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/activity_data_input_catch_cons_question_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp">
+            <RadioButton android:id="@+id/activity_data_input_catch_cons_question_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/answer_yes"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton android:id="@+id/activity_data_input_catch_cons_question_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/answer_no"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_marginLeft="20dp"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+
+        <RelativeLayout
+            android:id="@+id/activity_catch_cons_quantity_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/activity_data_input_catch_cons_question_N"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/data_input_catch_sale_question_N"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Medium"
+                />
+
+            <NumberPicker
+                android:id="@+id/activity_data_input_catch_cons_input_N"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_data_input_catch_cons_question_N"
+                />
+
+            <NumberPicker
+                android:id="@+id/activity_data_input_catch_cons_input_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/activity_data_input_catch_cons_question_N"
+                android:layout_toRightOf="@id/activity_data_input_catch_cons_input_N"
+                android:layout_marginLeft="40dp"
+                />
+
+            <EditText
+                android:id="@+id/activity_data_input_catch_cons_input_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/data_input_catch_sale_question_details"
+                android:imeOptions="flagNoExtractUi"
+                android:layout_below="@id/activity_data_input_catch_cons_input_N"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_catch_cons_pic_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/activity_data_input_catch_cons_question_pic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_catch_sale_question_pic"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Medium"
+                />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/activity_data_input_catch_cons_question_pic_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton android:id="@+id/activity_data_input_catch_cons_question_pic_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/answer_yes"
+                    style="@android:style/TextAppearance.Medium"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton android:id="@+id/activity_data_input_catch_cons_question_pic_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/answer_no"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

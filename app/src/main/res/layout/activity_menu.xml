@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.MenuActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/activity_menu_start_tracking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_menu_start_tracking_btn"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:padding="15dp"
+                android:textStyle="bold"
+                android:background="@color/colorPrimaryDark"
+                />
+
+            <Button
+                android:id="@+id/activity_menu_see_my_tracks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_menu_track_list_btn"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:padding="5dp"
+                android:background="@color/colorAccent"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

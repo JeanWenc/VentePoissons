@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_fish_picker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".utils.FishPickerDialog">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_fish_picker_text"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/dialog_fish_picker_tahitian_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:layout_marginBottom="5dp"
+        android:text=""/>
+    <EditText
+        android:id="@+id/dialog_fish_picker_input_other_fish"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/dialog_fish_picker_input_other_fish_hint"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <NumberPicker
+            android:id="@+id/dialog_fish_picker_N"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
+
+        <NumberPicker
+            android:id="@+id/dialog_fish_picker_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialog_fish_picker_button_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:text="@string/answer_Ok"
+            android:background="@color/zissouBlueLight"/>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/dialog_fish_picker_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:background="@color/zissouRed"
+            android:text="@string/answer_Cancel"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

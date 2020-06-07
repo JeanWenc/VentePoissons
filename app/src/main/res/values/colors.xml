@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#186DBF</color>
+    <color name="colorPrimaryDark">#12518C</color>
+    <color name="colorAccent">#5792CA</color>
+    <color name="zissouBlueDark">#3B9AB2</color>
+    <color name="zissouBlueLight">#78B7C5</color>
+    <color name="zissouYelLight">#EBCC2A</color>
+    <color name="zissouYelDark">#E1AF00</color>
+    <color name="zissouRed">#F21A00</color>
+</resources>

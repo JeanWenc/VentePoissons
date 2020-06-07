@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".controller.dataInput.dataInputBoat">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/data_input_boat_question"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Large"
+                />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton android:id="@+id/activity_data_input_boat_motor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_boat_question_motor"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/activity_data_input_boat_pirogue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_boat_question_pirogue"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/activity_data_input_boat_nage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_boat_question_nage"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:onClick="onRadioButtonClicked"/>
+                <RadioButton android:id="@+id/activity_data_input_boat_shore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_boat_question_shore"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>

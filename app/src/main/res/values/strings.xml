@@ -1,0 +1,325 @@
+<resources>
+    <string name="app_name">Vente Poissons</string>
+    <string name="app_name_w_version">Ventes Bord de Route v1.0</string>
+
+    <string name="answer_validate">Valider</string>
+    <string name="answer_yes">Oui</string>
+    <string name="answer_no">Non</string>
+    <string name="answer_next">Suivant</string>
+    <string name="answer_Ok">OK</string>
+    <string name="answer_Cancel">Annuler</string>
+    <string name="answer_Delete">SUPPRIMER</string>
+
+    <string name="thank_you_message">"Point de vente enregistré !"</string>
+
+    <!-- MAIN ACTIVITY -->
+    <string name="activity_main_hello">"'Ia ora na "</string>
+
+    <!-- LOGIN ACTIVITY -->
+    <string name="activity_login_name_hint">Nom du collaborateur</string>
+    <string name="activity_login_id_hint">Identifiant du collaborateur</string>
+
+    <!--MENU ACTIVITY-->
+    <string name="activity_menu_start_tracking_btn">"Nouveau vendeur\n\nPrendre photos et Remplir questionnaire"</string>
+    <string name="activity_menu_track_list_btn">"Liste de mes pêcheurs"</string>
+
+    <!-- TRACKLIST ACTIVITY -->
+    <string name="activity_track_list_empty">Aucun tracé enregistré</string>
+
+    <!-- TRACKLIST ITEM -->
+    <string name="track_item_track_method">Méth. tracé = </string>
+    <string name="track_item_data_added">Questions = </string>
+    <string name="track_item_pic_added">Photos = </string>
+    <string name="track_item_exported">Exporté = </string>
+    <string name="track_item_emailed">Envoyé (email) = </string>
+    <string name="track_item_trackpoints_count">Nb de points: </string>
+    <string name="track_item_caught_fish_details">Détails poissons</string>
+
+    <!-- TRACKDETAIL ACTIVITY -->
+    <string name="activity_track_detail_export_message_success">"Photos et questionnaire enregistrés\nMauruuru!"</string>
+    <string name="activity_track_detail_zip_task_msg_error">"Erreur"</string>
+    <string name="activity_track_detail_zip_email">"Préparation de l'envoi..."</string>
+
+    <!--TRACKDETAIL MENU-->
+    <string name="menu_adddata">Remplir Questionnaire</string>
+    <string name="menu_addpicture">Ajouter des photos de poissons</string>
+    <string name="menu_exportGPX">Exporter tracé</string>
+    <string name="menu_send_data_pic">Envoi des données</string>
+
+    <!-- EXPORT GPX -->
+    <string name="trackmgr_exporting_prepare">Preparing export&#8230;</string>
+    <string name="trackmgr_exporting">Exporting track #{0}&#8230;</string>
+    <string name="trackmgr_export_error">Unable to export track: {0}</string>
+    <string name="trackmgr_exportall_confirm">All tracks will be exported, which could take a long time. Are you sure?</string>
+    <string name="trackmgr_newtrack_error">Unable to create a new track: {0}</string>
+
+    <!-- GPX -->
+    <string name="gpx_track_name">Tracked with Traceur ReCoPeM</string>
+
+    <!-- TRACKDETAIL ACTIVITY WIFI ALERT DIALOG -->
+    <string name="activity_track_detail_wifi_dialog_title">PAS DE CONNEXION WIFI</string>
+    <string name="activity_track_detail_wifi_dialog_message">"Tu n'es pas connecté au WiFi.
+        \n\nIl est déconseillé d'envoyer les données, cela peut te coûter de l'argent (ou finir ton crédit)."</string>
+    <string name="activity_track_detail_wifi_dialog_yes">POURSUIVRE QUAND MEME</string>
+    <string name="activity_track_detail_wifi_dialog_no">ANNULER</string>
+
+    <!-- SHOW PICTURE ACTIVITY -->
+    <string name="activity_show_picture_deleting_image">Suppression image...</string>
+
+    <!-->ERRORS<-->
+    <string name="error_create_track_dir">Unable to create track folder %s</string>
+    <string name="error_externalstorage_not_writable">Unable to write to external storage.</string>
+
+    <!-->NOTIFICATION<-->
+    <string name="tracking_notification_title">Enregristrement tracé #</string>
+    <string name="tracking_notification_content">"Tapez ici pour ouvrir l'application."</string>
+
+    <!-->DIALOGS<-->
+    <string name="activity_display_map_dialog_GPS_disabled_title">GPS Eteint</string>
+    <string name="activity_display_map_dialog_GPS_disabled_content">"Le GPS est éteint, il faut l'allumer."</string>
+    <string name="activity_display_map_dialog_GPS_disabled_yes">ALLUMER GPS</string>
+    <string name="activity_display_map_dialog_GPS_disabled_no">""</string>
+
+    <!--DATA INPUT-->
+    <!--MENU-->
+    <string name="data_input_menu_next">Suivant</string>
+    <!--WHO-->
+    <string name="data_input_new_fisher_question">Est-ce un nouveau pêcheur ?</string>
+    <string name="data_input_who_select_old_fisher_question">Sélectionne le nom du pêcheur:</string>
+    <string name="data_input_who_input_new_fisher_question">"Informations nouveau pêcheur"</string>
+    <string name="data_input_who_input_new_fisher_name_hint">Nom du pêcheur</string>
+    <string name="data_input_who_input_new_fisher_phone_hint">Numéro VINI du pêcheur</string>
+    <string name="data_input_who_select_new_fisher_residence">Lieu de résidence</string>
+
+    <!--WHEN-->
+    <string name="data_input_when_question">Quand es-tu parti pêcher ?"</string>
+    <string name="data_input_when_question_yesterday_day">Hier Journée</string>
+    <string name="data_input_when_question_last_night">Hier Soir</string>
+    <string name="data_input_when_where_question">Où es-tu parti pêcher (village) ?</string>
+    <string name="data_input_when_habitat_question">Quel type de spot ?</string>
+    <string name="data_input_when_habitat_fore_reef">Dehors (Tua)</string>
+    <string name="data_input_when_habitat_pass">Passe (Ava)</string>
+    <string name="data_input_when_habitat_back_reef">"Récif (Pe'au)"</string>
+    <string name="data_input_when_habitat_channel">"Chenal (Dedans - profondeur)"</string>
+    <string name="data_input_when_habitat_fringing">"Tatahai (proche côte)"</string>
+
+    <!--GEAR-->
+    <string name="data_input_gear_question">Quel type de pêche ?"</string>
+    <string name="data_input_gear_question_detail">Plusieurs choix possibles"</string>
+    <string name="data_input_gear_question_fusil">Pupuhi</string>
+    <string name="data_input_gear_question_filet">Upea</string>
+    <string name="data_input_gear_question_ligne">Ligne</string>
+    <string name="data_input_gear_question_rama">Rama (Langoustes, Vana etc.)</string>
+    <string name="data_input_gear_question_cage">Faa</string>
+    <string name="data_input_gear_question_harpon">Patia</string>
+    <string name="data_input_gear_question_autre">Autre:</string>
+    <string name="data_input_gear_question_autre_detail">Si autre, détaille ici:</string>
+
+    <!--BOAT-->
+    <string name="data_input_boat_question">Quel moyen de navigation ?"</string>
+    <string name="data_input_boat_question_motor">Bateau à moteur</string>
+    <string name="data_input_boat_question_pirogue">Pirogue</string>
+    <string name="data_input_boat_question_nage">Nage/Boston</string>
+    <string name="data_input_boat_question_shore">Aucun, depuis le bord (tahatai)</string>
+    <string name="data_input_boat_question_boat_owner">Es-tu propriétaire du bateau ?</string>
+    <string name="data_input_boat_question_boat_owner_outrigger">Es-tu propriétaire de la pirogue ?</string>
+
+    <!--WIND-->
+    <string name="data_input_wind_question">Force du vent ?"</string>
+    <string name="data_input_wind_question_1">1\nFaible</string>
+    <string name="data_input_wind_question_2">2\nMoyen</string>
+    <string name="data_input_wind_question_3">3\nFort</string>
+
+    <!--WIND-->
+    <string name="data_input_current_question">Force du courant ?"</string>
+    <string name="data_input_current_question_1">1\nFaible</string>
+    <string name="data_input_current_question_2">2\nMoyen</string>
+    <string name="data_input_current_question_3">3\nFort</string>
+
+    <!--CREW-->
+    <string name="data_input_crew_question">Es-tu parti pêcher seul ?"</string>
+    <string name="data_input_crew_question_N">Combien de pêcheurs sont partis avec toi ?</string>
+    <string name="data_input_crew_question_who">Qui est parti avec toi ?</string>
+    <string name="data_input_crew_question_who_details">Pas obligatoire.</string>
+    <string name="data_input_crew_input_who">"Noms ou Relations (exple: Mon cousin, mon voisin, mon ami)"</string>
+
+    <!--CATCH SALE-->
+    <string name="data_input_catch_sale_question">As-tu VENDU du poisson en\nBORD DE ROUTE ?"</string>
+    <string name="data_input_catch_sale_question_N">Quelles quantités ?</string>
+    <string name ="data_input_catch_sale_many_fishers_one_rack">Si plusieurs vendeurs sur un porte-tui, indiquer numéro des tui pour ce pêcheur</string>
+    <string name ="data_input_catch_sale_many_fishers_one_rack_hint">Compter en commençant de tatahai ou de Maatea</string>
+    <string name ="data_input_catch_sale_launch_fish_caught">POISSONS DEJA VENDUS ?</string>
+    <string-array name="data_input_catch_sale_type">
+        <item>Choisi</item>
+        <item>tui</item>
+        <item>poissons</item>
+        <item>kilos</item>
+        <item>paquet</item>
+    </string-array>
+    <string name="data_input_catch_sale_question_price">"Prix pour un : "</string>
+    <string-array name="data_input_catch_sale_price">
+        <item>Prix pour un</item>
+        <item>500F</item>
+        <item>1000F</item>
+        <item>1500F</item>
+        <item>2000F</item>
+        <item>2500F</item>
+        <item>3000F</item>
+        <item>3500F</item>
+        <item>4000F</item>
+        <item>5000F</item>
+        <item>6000F</item>
+        <item>7000F</item>
+        <item>8000F</item>
+        <item>9000F</item>
+    </string-array>
+    <string name="data_input_catch_sale_question_where">"Vendu où :"</string>
+    <string-array name="data_input_catch_sale_where">
+        <item>"Choisi le lieu"</item>
+        <item>Maatea</item>
+        <item>Haumi</item>
+        <item>Afareaitu</item>
+        <item>Patae</item>
+        <item>Vaiare</item>
+        <item>Teavaro</item>
+        <item>Temae</item>
+        <item>Tiaia</item>
+        <item>Maharepa</item>
+        <item>Paopao</item>
+        <item>Pihaena</item>
+        <item>Vaihere</item>
+        <item>Opunohu</item>
+        <item>Urufara</item>
+        <item>Papetoai</item>
+        <item>Tiahura</item>
+        <item>Varari</item>
+        <item>Haapiti</item>
+        <item>Vaianae</item>
+        <item>Atiha</item>
+    </string-array>
+    <string name="data_input_catch_sale_question_details">"Ajoute des détails, si besoin."</string>
+    <string name="data_input_catch_sale_question_pic">"As-tu pris une photo du poisson/de ta prise ?"</string>
+
+    <!--DATA INPUT CATCH ORDER-->
+    <string name="data_input_catch_order_question">As-tu VENDU du poisson par\nCOMMANDES ?"</string>
+    <string name="data_input_catch_order_question_pic_if_sale_pic">"Les poissons vendus par commandes sont-ils visibles sur tes photos ?"</string>
+
+    <!--DATA INPUT CATCH GIVE-->
+    <string name="data_input_catch_give_question">As-tu DONNE du poisson ?"</string>
+    <string name="data_input_catch_give_question_where">"Donné où :"</string>
+    <string name="data_input_catch_give_question_pic_if_sale_pic">"Les poissons donnés sont-ils visibles sur tes photos ?"</string>
+
+    <!--DATA INPUT CATCH CONS-->
+    <string name="data_input_catch_cons_question">As-tu GARDE du poisson pour toi ?"</string>
+    <string name="data_input_catch_cons_question_pic_if_sale_pic">"Les poissons gardés sont-ils visibles sur tes photos ?"</string>
+
+    <!--DATA INPUT FISH CAUGHT-->
+    <string name="data_input_fish_caught_intro">Clique sur les poissons que tu as pêchés pour indiquer leur nombre</string>
+    <string name="data_input_fish_caught_other_fish">"Les autres poissons que j'ai attrapé : "</string>
+    <!--DIALOG FISH PICKER -->
+    <string name="dialog_fish_picker_text">Quantités pêchées</string>
+    <string name="dialog_fish_picker_input_other_fish_hint">Ecris le nom du poisson</string>
+    <!--FISH CAUGHT-->
+    <string name="activity_data_input_fish_caught_main_menu">Menu principal</string>
+    <string-array name="data_input_fish_caught_fish_file_list">
+        <item>fish_new_fish.png</item>
+        <item>fish_pahoro.jpg</item>
+        <item>fish_paati.jpg</item>
+        <item>fish_uhu.jpg</item>
+        <item>fish_tapio.jpg</item>
+        <item>fish_papae.jpg</item>
+        <item>fish_papae2.jpg</item>
+        <item>fish_maito.jpg</item>
+        <item>fish_parai.jpg</item>
+        <item>fish_tarei.jpg</item>
+        <item>fish_ume.png</item>
+        <item>fish_marava.jpg</item>
+        <item>fish_nanue.jpg</item>
+        <item>fish_mara.jpg</item>
+        <item>fish_iihi.jpg</item>
+        <item>fish_apai.jpg</item>
+        <item>fish_mataanaana.jpg</item>
+        <item>fish_ature.jpg</item>
+        <item>fish_paaihere.jpg</item>
+        <item>fish_oeo.jpg</item>
+        <item>fish_mu.jpg</item>
+        <item>fish_roi.jpg</item>
+        <item>fish_tarao.jpg</item>
+        <item>fish_hoa.jpg</item>
+        <item>fish_vete.jpg</item>
+        <item>fish_toau.jpg</item>
+        <item>fish_taivaiva.jpg</item>
+        <item>fish_taea.jpg</item>
+        <item>fish_nape.jpg</item>
+        <item>fish_oiri.jpg</item>
+        <item>fish_paraha.jpg</item>
+    </string-array>
+
+    <string-array name="data_input_fish_caught_fish_tahitian_list">
+        <item>Autre poisson</item>
+        <item>Pahoro</item>
+        <item>Paati</item>
+        <item>Uhu, Moreo...</item>
+        <item>Tapio</item>
+        <item>Papae</item>
+        <item>Papae utu roa</item>
+        <item>Maito</item>
+        <item>"Para'i, Oturi..."</item>
+        <item>Tarei</item>
+        <item>Ume</item>
+        <item>"Marava, Pa'aua'ra"</item>
+        <item>Nanue</item>
+        <item>Mara</item>
+        <item>Iihi</item>
+        <item>"Apa'i"</item>
+        <item>"Mata'ana'ana"</item>
+        <item>Ature, Aramea, Orare</item>
+        <item>Paaihere, Ruhi, Pu harehare</item>
+        <item>"O'eo"</item>
+        <item>Mu</item>
+        <item>Roi</item>
+        <item>Tarao</item>
+        <item>Hoa</item>
+        <item>Vete, Ahuru, Atiatia</item>
+        <item>"To'au"</item>
+        <item>Taivaiva</item>
+        <item>Taea, Tuhara</item>
+        <item>Nape, Tehu</item>
+        <item>"O'iri"</item>
+        <item>Paraha peue</item>
+    </string-array>
+
+    <string-array name="data_input_fish_caught_fish_family_list">
+        <item>otherFish</item>
+        <item>Parrotfish IP</item>
+        <item>Parrotfish TP</item>
+        <item>Parrotfish microrhinos</item>
+        <item>Parrotfish lepto</item>
+        <item>Cheilinus sp.</item>
+        <item>Epibulus insidator</item>
+        <item>Ctenochaetus striatus</item>
+        <item>Acanthurus xanthopterus</item>
+        <item>Naso lituratus</item>
+        <item>Naso unicornis</item>
+        <item>Siganus spp.</item>
+        <item>Kyphosus</item>
+        <item>Cheilinus undulatus</item>
+        <item>Myrpristis spp.</item>
+        <item>Sargocentron spp.</item>
+        <item>Heteropriacanthus spp.</item>
+        <item>Selar crumenophtalmus</item>
+        <item>Carangidae</item>
+        <item>Lethrinus spp.</item>
+        <item>Monotaxis grandoculis</item>
+        <item>Cephalopholis argus</item>
+        <item>Epinephelus spp.</item>
+        <item>Variola louti</item>
+        <item>Mullidae</item>
+        <item>Lutjanus fulvus</item>
+        <item>Lutjanus monostigma</item>
+        <item>Lutjanus gibbus</item>
+        <item>Mugilidae</item>
+        <item>Balistidae</item>
+        <item>Platax</item>
+    </string-array>
+</resources>

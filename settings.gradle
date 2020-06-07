@@ -1,0 +1,2 @@
+rootProject.name='Vente Poissons'
+include ':app'

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.dataInput.dataInputWhen">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+            <TextView
+                android:id="@+id/activity_data_input_when_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/data_input_when_question"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Large"
+                />
+
+            <RadioGroup
+                android:id="@+id/activity_data_input_crew_question_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+                <RadioButton android:id="@+id/activity_data_input_when_question_yesterday_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_when_question_yesterday_day"
+                    style="@android:style/TextAppearance.Medium"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton android:id="@+id/activity_data_input_when_question_last_night"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_when_question_last_night"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_where_question"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Medium"
+                />
+
+            <Spinner
+                android:id="@+id/activity_data_when_where_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop ="10dp"
+                android:layout_marginBottom="20dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_habitat_question"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Medium"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_detail"
+                android:layout_marginBottom="5dp"
+                android:textStyle="italic"
+                style="@android:style/TextAppearance.Medium"
+                />
+
+            <CheckBox android:id="@+id/activity_data_input_when_habitat_fore_reef"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_habitat_fore_reef"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_when_habitat_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_habitat_pass"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_when_habitat_back_reef"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_habitat_back_reef"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_when_habitat_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_habitat_channel"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_when_habitat_fringing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_when_habitat_fringing"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+        </LinearLayout>
+</ScrollView>

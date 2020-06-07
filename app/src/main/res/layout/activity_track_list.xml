@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.TrackListActivity">
+
+    <RelativeLayout
+        android:layout_height="60dp"
+        android:gravity="top"
+        android:layout_width="fill_parent"
+        android:background="@color/colorPrimary">
+
+        <ImageButton
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_tracklist_home"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_revert"
+            android:tint="@android:color/white"
+            android:background="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
+
+    <FrameLayout android:layout_weight="1" android:layout_width="fill_parent"
+        android:layout_height="0dip" android:padding="3dp">
+
+        <ListView android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@android:id/list">
+        </ListView>
+
+        <TextView android:text="@string/activity_track_list_empty" android:padding="5dp"
+            android:id="@+id/activity_tracklist_empty" android:layout_width="fill_parent" android:layout_height="fill_parent"
+            android:gravity="center" style="@android:style/TextAppearance.Medium" />
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.dataInput.dataInputFishCaught"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/data_input_fish_caught_intro"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/activity_data_input_fish_caught_other_fish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:text="@string/data_input_fish_caught_other_fish"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/zissouYelDark"
+        />
+
+    <TextView
+        android:id="@+id/activity_data_input_fish_caught_other_fish_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:text=""
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/zissouYelDark"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activity_data_input_fish_caught_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+</LinearLayout>

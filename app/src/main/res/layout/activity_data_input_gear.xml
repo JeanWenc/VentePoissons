@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.dataInput.dataInputGear">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/data_input_gear_question"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Large"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/data_input_gear_question_detail"
+                android:textStyle="italic"
+                style="@android:style/TextAppearance.Medium"
+                />
+
+            <CheckBox android:id="@+id/activity_data_input_gear_fusil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_fusil"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_gear_filet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_filet"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_gear_ligne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_ligne"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_gear_rama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_rama"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_gear_cage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_cage"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_gear_harpon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_harpon"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <CheckBox android:id="@+id/activity_data_input_gear_autre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/data_input_gear_question_autre"
+                android:layout_marginLeft="30dp"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onCheckboxClicked"/>
+
+            <EditText
+                android:id="@+id/activity_data_input_gear_autre_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                style="@android:style/TextAppearance.Medium"
+                android:hint="@string/data_input_gear_question_autre_detail"
+                android:imeOptions="flagNoExtractUi"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

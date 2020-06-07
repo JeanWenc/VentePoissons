@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.dataInput.dataInputWho">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/activity_data_input_new_fisher_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/data_input_new_fisher_question"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Large"
+                />
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/activity_data_input_who_question_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp">
+                <RadioButton android:id="@+id/activity_data_input_new_fisher_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/answer_yes"
+                    style="@android:style/TextAppearance.Medium"
+                    android:onClick="onRadioButtonClicked"/>
+
+                <RadioButton android:id="@+id/activity_data_input_new_fisher_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/answer_no"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_marginLeft="20dp"
+                    android:onClick="onRadioButtonClicked"/>
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/activity_who_old_fisher_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/activity_data_who_select_old_fisher_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_who_select_old_fisher_question"
+                    android:textStyle="bold"
+                    style="@android:style/TextAppearance.Medium"
+                    />
+
+                <Spinner
+                    android:id="@+id/activity_data_who_select_old_fisher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop ="10dp"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_who_new_fisher_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:id="@+id/activity_data_input_who_input_new_fisher_question"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_who_input_new_fisher_question"
+                    android:textStyle="bold"
+                    style="@android:style/TextAppearance.Large"
+                    />
+
+                <EditText
+                    android:id="@+id/activity_data_input_who_input_new_fisher_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/data_input_who_input_new_fisher_name_hint"
+                    android:imeOptions="flagNoExtractUi"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/data_input_who_select_new_fisher_residence"
+                    android:textStyle="bold"
+                    style="@android:style/TextAppearance.Medium"
+                    />
+
+                <Spinner
+                    android:id="@+id/activity_data_who_input_new_fisher_residence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop ="10dp"
+                    style="@style/TextAppearance.AppCompat.Medium"
+                    />
+                <EditText
+                    android:id="@+id/activity_data_input_who_input_new_fisher_phone"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/data_input_who_input_new_fisher_phone_hint"
+                    android:imeOptions="flagNoExtractUi"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
