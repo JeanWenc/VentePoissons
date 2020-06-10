@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="30dp">
                 <RadioButton android:id="@+id/activity_data_input_when_question_yesterday_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/data_input_when_where_question"
                 android:textStyle="bold"
-                style="@android:style/TextAppearance.Medium"
+                style="@style/TextAppearance.AppCompat.Large"
                 />
 
             <Spinner
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop ="10dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 />
 
             <TextView
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/data_input_when_habitat_question"
                 android:textStyle="bold"
-                style="@android:style/TextAppearance.Medium"
+                style="@style/TextAppearance.AppCompat.Large"
                 />
             <TextView
                 android:layout_width="match_parent"
@@ -92,26 +92,10 @@
                 style="@android:style/TextAppearance.Medium"
                 android:onClick="onCheckboxClicked"/>
 
-            <CheckBox android:id="@+id/activity_data_input_when_habitat_back_reef"
+            <CheckBox android:id="@+id/activity_data_input_when_habitat_lagoon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/data_input_when_habitat_back_reef"
-                android:layout_marginBottom="10dp"
-                style="@android:style/TextAppearance.Medium"
-                android:onClick="onCheckboxClicked"/>
-
-            <CheckBox android:id="@+id/activity_data_input_when_habitat_channel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/data_input_when_habitat_channel"
-                android:layout_marginBottom="10dp"
-                style="@android:style/TextAppearance.Medium"
-                android:onClick="onCheckboxClicked"/>
-
-            <CheckBox android:id="@+id/activity_data_input_when_habitat_fringing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/data_input_when_habitat_fringing"
+                android:text="@string/data_input_when_habitat_lagoon"
                 android:layout_marginBottom="10dp"
                 style="@android:style/TextAppearance.Medium"
                 android:onClick="onCheckboxClicked"/>

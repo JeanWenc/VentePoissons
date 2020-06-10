@@ -57,9 +57,7 @@ public class dataInputWhen extends AppCompatActivity implements AdapterView.OnIt
     private static final String AND = " & ";
     private static final String FORE_REEF = "fore_reef";
     private static final String PASS = "pass";
-    private static final String BACK_REEF = "back_reef";
-    private static final String CHANNEL = "channel";
-    private static final String FRINGING = "fringing";
+    private static final String LAGOON = "lagoon";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,17 +141,9 @@ public class dataInputWhen extends AppCompatActivity implements AdapterView.OnIt
             CheckBox mPass = (CheckBox) findViewById(R.id.activity_data_input_when_habitat_pass);
             mPass.setChecked(true);
         }
-        if(habitats.contains(BACK_REEF)){
-            CheckBox mBackReef = (CheckBox) findViewById(R.id.activity_data_input_when_habitat_back_reef);
+        if(habitats.contains(LAGOON)){
+            CheckBox mBackReef = (CheckBox) findViewById(R.id.activity_data_input_when_habitat_lagoon);
             mBackReef.setChecked(true);
-        }
-        if(habitats.contains(CHANNEL)){
-            CheckBox mChannel = (CheckBox) findViewById(R.id.activity_data_input_when_habitat_channel);
-            mChannel.setChecked(true);
-        }
-        if(habitats.contains(FRINGING)){
-            CheckBox mFringing = (CheckBox) findViewById(R.id.activity_data_input_when_habitat_fringing);
-            mFringing.setChecked(true);
         }
     }
 
@@ -230,34 +220,14 @@ public class dataInputWhen extends AppCompatActivity implements AdapterView.OnIt
                 }
 
                 break;
-            case R.id.activity_data_input_when_habitat_back_reef:
+            case R.id.activity_data_input_when_habitat_lagoon:
                 if (checked){
                     if(!mHabitats.equals(EMPTY))
-                        mHabitats+=AND + BACK_REEF;
+                        mHabitats+=AND + LAGOON;
                     else
-                        mHabitats=BACK_REEF;
+                        mHabitats=LAGOON;
                 }else{
-                    if(mHabitats.contains(BACK_REEF)) removeString(BACK_REEF);
-                }
-                break;
-            case R.id.activity_data_input_when_habitat_channel:
-                if (checked){
-                    if(!mHabitats.equals(EMPTY))
-                        mHabitats+=AND + CHANNEL;
-                    else
-                        mHabitats=CHANNEL;
-                }else{
-                    if(mHabitats.contains(CHANNEL)) removeString(CHANNEL);
-                }
-                break;
-            case R.id.activity_data_input_when_habitat_fringing:
-                if (checked){
-                    if(!mHabitats.equals(EMPTY))
-                        mHabitats+=AND + FRINGING;
-                    else
-                        mHabitats=FRINGING;
-                }else{
-                    if(mHabitats.contains(FRINGING)) removeString(FRINGING);
+                    if(mHabitats.contains(LAGOON)) removeString(LAGOON);
                 }
                 break;
         }

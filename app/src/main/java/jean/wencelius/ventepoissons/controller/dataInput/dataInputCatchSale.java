@@ -14,10 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
-import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
@@ -26,34 +23,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 
 import jean.wencelius.ventepoissons.R;
+import jean.wencelius.ventepoissons.controller.TrackDetailActivity;
+import jean.wencelius.ventepoissons.controller.TrackListActivity;
 import jean.wencelius.ventepoissons.db.TrackContentProvider;
-import jean.wencelius.ventepoissons.model.AppPreferences;
 import jean.wencelius.ventepoissons.recopemValues;
 
 public class dataInputCatchSale extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    static dataInputCatchSale saleAct;
+    private static final String QUESTION_NUMBER = "Question 7/";
 
-    private static final String QUESTION_NUMBER = "Question 6/";
-
-    private String mCatchSaleAns;
     private int mCatchSaleN;
     private String mCatchSaleType;
     private int mCatchSaleTypeInt;
     private String mCatchSalePrice;
     private int mCatchSalePriceInt;
     private String mCatchSaleDetails;
-    private String mCatchSaleSeveralFishers;
 
     private static final String mCatchDestination = "sale";
 
     private long trackId;
 
-    //Views
-    private RelativeLayout mCatchSaleQuantityFrame;
-
     private EditText mCatchSaleInputDetails;
-    private EditText mCatchSaleInputSeveralFishers;
 
     private String[] prices;
     private String [] type;
@@ -61,12 +51,11 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
     private boolean nValid;
     private boolean typeValid;
     private boolean priceValid;
+    private boolean caughtFishValid;
+
+    private static final String BUNDLE_STATE_CAUGHT_FISH_VALID = "caughtFishValid";
 
     private boolean showNext;
-
-    private static final String EMPTY = "empty";
-
-    private static final String BUNDLE_STATE_SEVERAL_FISHERS = "severalFishers";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,25 +65,19 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
         //Prevent keyboard from showing up on activity start
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-        saleAct = this;
-
-        mCatchSaleQuantityFrame = (RelativeLayout) findViewById(R.id.activity_catch_sale_quantity_frame);
-
         mCatchSaleInputDetails = (EditText) findViewById(R.id.activity_data_input_catch_sale_input_details);
-
-        mCatchSaleInputSeveralFishers = (EditText) findViewById(R.id.activity_data_input_catch_sale_many_fishers_one_rack);
 
         Button mLaunchFishCaught = (Button) findViewById(R.id.activity_data_input_catch_sale_launch_fish_caught);
 
         mLaunchFishCaught.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                caughtFishValid = true;
+                showNext = nValid && typeValid && priceValid && caughtFishValid;
+                invalidateOptionsMenu();
                 LaunchFishCaughtIntent();
             }
         });
-
-        RadioButton mCatchSaleInputAnsY = (RadioButton) findViewById(R.id.activity_data_input_catch_sale_question_yes);
-        RadioButton mCatchSaleInputAnsN = (RadioButton) findViewById(R.id.activity_data_input_catch_sale_question_no);
 
         NumberPicker mCatchSaleInputN = (NumberPicker) findViewById(R.id.activity_data_input_catch_sale_input_N);
         NumberPicker mCatchSaleInputType = (NumberPicker) findViewById(R.id.activity_data_input_catch_sale_input_type);
@@ -127,15 +110,15 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
         mCatchSaleInputPrice.setAdapter(priceAdapter);
         mCatchSaleInputPrice.setOnItemSelectedListener(this);
 
+        caughtFishValid = false;
         if(savedInstanceState != null){
-            mCatchSaleAns = savedInstanceState.getString(recopemValues.BUNDLE_STATE_ANS);
             mCatchSaleN = savedInstanceState.getInt(recopemValues.BUNDLE_STATE_CATCH_N);
             mCatchSaleTypeInt = savedInstanceState.getInt(recopemValues.BUNDLE_STATE_TYPE_INT);
             mCatchSaleType = type[mCatchSaleTypeInt];
             mCatchSalePriceInt = savedInstanceState.getInt(recopemValues.BUNDLE_STATE_PRICE_INT);
             mCatchSalePrice = prices[mCatchSalePriceInt];
             mCatchSaleDetails = savedInstanceState.getString(recopemValues.BUNDLE_STATE_DETAILS);
-            mCatchSaleSeveralFishers = savedInstanceState.getString(BUNDLE_STATE_SEVERAL_FISHERS);
+            caughtFishValid = savedInstanceState.getBoolean(BUNDLE_STATE_CAUGHT_FISH_VALID);
 
             trackId = savedInstanceState.getLong(recopemValues.BUNDLE_STATE_TRACK_ID);
 
@@ -145,17 +128,14 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
             Cursor mTrackCursor = getContentResolver().query(ContentUris.withAppendedId(TrackContentProvider.CONTENT_URI_TRACK, trackId), null, null, null, null);
             mTrackCursor.moveToPosition(0);
 
-            String catchSaleAns = mTrackCursor.getString(mTrackCursor.getColumnIndex(TrackContentProvider.Schema.COL_CATCH_SALE));
             int catchSaleN = mTrackCursor.getInt(mTrackCursor.getColumnIndex(TrackContentProvider.Schema.COL_CATCH_SALE_N));
             String catchSaleType = mTrackCursor.getString(mTrackCursor.getColumnIndex(TrackContentProvider.Schema.COL_CATCH_SALE_TYPE));
             String catchSalePrice = mTrackCursor.getString(mTrackCursor.getColumnIndex(TrackContentProvider.Schema.COL_CATCH_SALE_PRICE));
             String catchSaleDetails = mTrackCursor.getString(mTrackCursor.getColumnIndex(TrackContentProvider.Schema.COL_CATCH_SALE_DETAILS));
-            String severalFishers = mTrackCursor.getString(mTrackCursor.getColumnIndex(TrackContentProvider.Schema.COL_CATCH_SALE_SEVERAL_FISHERS));
 
             mTrackCursor.close();
 
-            if(catchSaleAns!=null){
-                mCatchSaleAns = catchSaleAns;
+            if(catchSaleType!=null){
                 mCatchSaleN = catchSaleN;
                 mCatchSaleType = catchSaleType;
                 if (catchSaleType!=null){
@@ -170,21 +150,15 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
                     mCatchSalePriceInt = 0;
                 }
                 mCatchSaleDetails = catchSaleDetails;
-                mCatchSaleSeveralFishers = severalFishers;
             }else{
-                mCatchSaleAns = EMPTY;
                 mCatchSaleN = 0;
                 mCatchSaleType = type[0];
                 mCatchSaleTypeInt = 0;
                 mCatchSalePrice = prices[0];
                 mCatchSalePriceInt = 0;
                 mCatchSaleDetails = "NA";
-                mCatchSaleSeveralFishers = "NA";
             }
         }
-
-        mCatchSaleInputAnsY.setChecked(mCatchSaleAns.equals("true"));
-        mCatchSaleInputAnsN.setChecked(mCatchSaleAns.equals("false"));
 
         mCatchSaleInputN.setValue(mCatchSaleN);
         mCatchSaleInputType.setValue(mCatchSaleTypeInt);
@@ -194,52 +168,15 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
             mCatchSaleInputDetails.setText(mCatchSaleDetails);
             mCatchSaleInputDetails.setSelection(mCatchSaleDetails.length());
         }
-        if(!mCatchSaleSeveralFishers.equals("NA")){
-            mCatchSaleInputDetails.setText(mCatchSaleSeveralFishers);
-            mCatchSaleInputDetails.setSelection(mCatchSaleSeveralFishers.length());
-        }
 
         nValid = mCatchSaleN!=0;
         typeValid = mCatchSaleTypeInt!=0;
         priceValid = mCatchSalePriceInt!=0;
 
-        showNext = mCatchSaleAns.equals("false") || (nValid && typeValid && priceValid);
+        showNext = nValid && typeValid && priceValid && caughtFishValid;
         invalidateOptionsMenu();
-
-        if(mCatchSaleAns.equals("true")){
-            mCatchSaleQuantityFrame.setVisibility(View.VISIBLE);
-        }else{
-            mCatchSaleQuantityFrame.setVisibility(View.INVISIBLE);
-        }
 
         setTitle(QUESTION_NUMBER + recopemValues.TOT_NB_QUESTIONS);
-    }
-
-    public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-        // Check which radio button was clicked
-        switch (view.getId()) {
-            case R.id.activity_data_input_catch_sale_question_no:
-                if (checked) {
-                    mCatchSaleAns="false";
-                    showNext = true;
-                    mCatchSaleQuantityFrame.setVisibility(View.INVISIBLE);
-                    mCatchSaleN = 0;
-                    mCatchSaleType = type[0];
-                    mCatchSaleTypeInt = 0;
-                    mCatchSalePrice = prices[0];
-                    mCatchSalePriceInt = 0;
-                }
-                break;
-            case R.id.activity_data_input_catch_sale_question_yes:
-                if (checked) {
-                    mCatchSaleAns="true";
-                    showNext = false;
-                    mCatchSaleQuantityFrame.setVisibility(View.VISIBLE);
-                }
-                break;
-        }
-        invalidateOptionsMenu();
     }
 
     @Override
@@ -250,7 +187,7 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
 
         priceValid = !mCatchSalePrice.equals(prices[0]);
 
-        showNext = mCatchSaleAns.equals("false") || (nValid && typeValid && priceValid);
+        showNext = nValid && typeValid && priceValid && caughtFishValid;
 
         invalidateOptionsMenu();
     }
@@ -266,7 +203,7 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
         public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
             mCatchSaleN = newVal;
             nValid = mCatchSaleN!=0;
-            showNext = mCatchSaleAns.equals("false") || (nValid && typeValid && priceValid);
+            showNext = nValid && typeValid && priceValid && caughtFishValid;
             invalidateOptionsMenu();
         }
     }
@@ -277,20 +214,18 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
             mCatchSaleType = type[newVal];
             mCatchSaleTypeInt = newVal;
             typeValid = !mCatchSaleType.equals(type[0]);
-            showNext = mCatchSaleAns.equals("false") || (nValid && typeValid && priceValid);
+            showNext = nValid && typeValid && priceValid && caughtFishValid;
             invalidateOptionsMenu();
         }
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-
-        outState.putString(recopemValues.BUNDLE_STATE_ANS,mCatchSaleAns);
         outState.putInt(recopemValues.BUNDLE_STATE_CATCH_N,mCatchSaleN);
         outState.putInt(recopemValues.BUNDLE_STATE_TYPE_INT,mCatchSaleTypeInt);
         outState.putInt(recopemValues.BUNDLE_STATE_PRICE_INT,mCatchSalePriceInt);
         outState.putString(recopemValues.BUNDLE_STATE_DETAILS,mCatchSaleInputDetails.getText().toString());
-        outState.putString(BUNDLE_STATE_SEVERAL_FISHERS,mCatchSaleInputSeveralFishers.getText().toString());
+        outState.putBoolean(BUNDLE_STATE_CAUGHT_FISH_VALID,caughtFishValid);
 
         outState.putLong(recopemValues.BUNDLE_STATE_TRACK_ID,trackId);
         super.onSaveInstanceState(outState);
@@ -322,27 +257,41 @@ public class dataInputCatchSale extends AppCompatActivity implements AdapterView
             case R.id.activity_data_input_menu_next:
                 mCatchSaleDetails = mCatchSaleInputDetails.getText().toString();
 
+                Cursor mCursorFishCaught = getContentResolver().query(TrackContentProvider.poissonsUri(trackId), null,
+                        null, null, null);
+                boolean addedFishCaughtInfo = false;
+                if(mCursorFishCaught != null){
+                    addedFishCaughtInfo = mCursorFishCaught.getCount()>0;
+                }
+
+                mCursorFishCaught.close();
+
                 Uri trackUri = ContentUris.withAppendedId(TrackContentProvider.CONTENT_URI_TRACK, trackId);
 
                 ContentValues catchSaleValues = new ContentValues();
-                catchSaleValues.put(TrackContentProvider.Schema.COL_CATCH_SALE,mCatchSaleAns);
                 catchSaleValues.put(TrackContentProvider.Schema.COL_CATCH_SALE_N,mCatchSaleN);
                 catchSaleValues.put(TrackContentProvider.Schema.COL_CATCH_SALE_TYPE,mCatchSaleType);
                 catchSaleValues.put(TrackContentProvider.Schema.COL_CATCH_SALE_PRICE,mCatchSalePrice);
                 catchSaleValues.put(TrackContentProvider.Schema.COL_CATCH_SALE_DETAILS,mCatchSaleDetails);
-                catchSaleValues.put(TrackContentProvider.Schema.COL_CATCH_SALE_SEVERAL_FISHERS,mCatchSaleSeveralFishers);
+                catchSaleValues.put(TrackContentProvider.Schema.COL_TRACK_DATA_ADDED,"true");
+                catchSaleValues.put(TrackContentProvider.Schema.COL_CAUGHT_FISH_DETAILS,Boolean.toString(addedFishCaughtInfo));
 
                 getContentResolver().update(trackUri, catchSaleValues, null, null);
 
-                Intent NextIntent = new Intent(dataInputCatchSale.this, dataInputCatchOrder.class);
+                Intent NextIntent = new Intent(dataInputCatchSale.this, TrackListActivity.class);
                 NextIntent.putExtra(TrackContentProvider.Schema.COL_TRACK_ID, trackId);
                 startActivity(NextIntent);
+
+                TrackDetailActivity.getInstance().finish();
+                dataInputWho.getInstance().finish();
+                dataInputWhen.getInstance().finish();
+                dataInputGear.getInstance().finish();
+                dataInputBoat.getInstance().finish();
+                dataInputCrew.getInstance().finish();
+                dataInputTuiRack.getInstance().finish();
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public static dataInputCatchSale getInstance(){
-        return   saleAct;
     }
 }

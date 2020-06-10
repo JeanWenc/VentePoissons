@@ -45,6 +45,7 @@
     <string name="menu_addpicture">Ajouter des photos de poissons</string>
     <string name="menu_exportGPX">Exporter tracé</string>
     <string name="menu_send_data_pic">Envoi des données</string>
+    <string name="menu_delete">Supprimer tracé</string>
 
     <!-- EXPORT GPX -->
     <string name="trackmgr_exporting_prepare">Preparing export&#8230;</string>
@@ -62,6 +63,10 @@
         \n\nIl est déconseillé d'envoyer les données, cela peut te coûter de l'argent (ou finir ton crédit)."</string>
     <string name="activity_track_detail_wifi_dialog_yes">POURSUIVRE QUAND MEME</string>
     <string name="activity_track_detail_wifi_dialog_no">ANNULER</string>
+
+    <!--TRACKDETAIL_ACTIVITY_DELETE-->
+    <string name="activity_track_detail_delete_dialog_title">SUPPRESSION TRACE</string>
+    <string name="activity_track_detail_delete_dialog_message">Veux tu supprimer ce tracé de façon définitive ?</string>
 
     <!-- SHOW PICTURE ACTIVITY -->
     <string name="activity_show_picture_deleting_image">Suppression image...</string>
@@ -99,7 +104,7 @@
     <string name="data_input_when_habitat_question">Quel type de spot ?</string>
     <string name="data_input_when_habitat_fore_reef">Dehors (Tua)</string>
     <string name="data_input_when_habitat_pass">Passe (Ava)</string>
-    <string name="data_input_when_habitat_back_reef">"Récif (Pe'au)"</string>
+    <string name="data_input_when_habitat_lagoon">"Dedans"</string>
     <string name="data_input_when_habitat_channel">"Chenal (Dedans - profondeur)"</string>
     <string name="data_input_when_habitat_fringing">"Tatahai (proche côte)"</string>
 
@@ -143,12 +148,15 @@
     <string name="data_input_crew_question_who_details">Pas obligatoire.</string>
     <string name="data_input_crew_input_who">"Noms ou Relations (exple: Mon cousin, mon voisin, mon ami)"</string>
 
+    <!--TUI RACK-->
+    <string name="data_input_tui_rack_question">"Plusieurs pêcheurs utilisent-ils le même porte-tui ?"</string>
+    <string name="data_input_tui_rack_prompt">Indique les numéros des tui pour ce pêcheur</string>
+    <string name="data_input_tui_rack_hint">Compter en commençant de tatahai ou de Maatea</string>
+
     <!--CATCH SALE-->
-    <string name="data_input_catch_sale_question">As-tu VENDU du poisson en\nBORD DE ROUTE ?"</string>
-    <string name="data_input_catch_sale_question_N">Quelles quantités ?</string>
-    <string name ="data_input_catch_sale_many_fishers_one_rack">Si plusieurs vendeurs sur un porte-tui, indiquer numéro des tui pour ce pêcheur</string>
-    <string name ="data_input_catch_sale_many_fishers_one_rack_hint">Compter en commençant de tatahai ou de Maatea</string>
-    <string name ="data_input_catch_sale_launch_fish_caught">POISSONS DEJA VENDUS ?</string>
+    <string name="data_input_catch_sale_question">Poissons vendus en BORD DE ROUTE"</string>
+    <string name="data_input_catch_sale_question_N">Quelle quantité TOTALE (sur le porte tui et déjà vendu) ?</string>
+    <string name="data_input_catch_sale_launch_fish_caught">POISSONS DEJA VENDUS ?</string>
     <string-array name="data_input_catch_sale_type">
         <item>Choisi</item>
         <item>tui</item>
@@ -200,19 +208,6 @@
     <string name="data_input_catch_sale_question_details">"Ajoute des détails, si besoin."</string>
     <string name="data_input_catch_sale_question_pic">"As-tu pris une photo du poisson/de ta prise ?"</string>
 
-    <!--DATA INPUT CATCH ORDER-->
-    <string name="data_input_catch_order_question">As-tu VENDU du poisson par\nCOMMANDES ?"</string>
-    <string name="data_input_catch_order_question_pic_if_sale_pic">"Les poissons vendus par commandes sont-ils visibles sur tes photos ?"</string>
-
-    <!--DATA INPUT CATCH GIVE-->
-    <string name="data_input_catch_give_question">As-tu DONNE du poisson ?"</string>
-    <string name="data_input_catch_give_question_where">"Donné où :"</string>
-    <string name="data_input_catch_give_question_pic_if_sale_pic">"Les poissons donnés sont-ils visibles sur tes photos ?"</string>
-
-    <!--DATA INPUT CATCH CONS-->
-    <string name="data_input_catch_cons_question">As-tu GARDE du poisson pour toi ?"</string>
-    <string name="data_input_catch_cons_question_pic_if_sale_pic">"Les poissons gardés sont-ils visibles sur tes photos ?"</string>
-
     <!--DATA INPUT FISH CAUGHT-->
     <string name="data_input_fish_caught_intro">Clique sur les poissons que tu as pêchés pour indiquer leur nombre</string>
     <string name="data_input_fish_caught_other_fish">"Les autres poissons que j'ai attrapé : "</string>
@@ -221,105 +216,64 @@
     <string name="dialog_fish_picker_input_other_fish_hint">Ecris le nom du poisson</string>
     <!--FISH CAUGHT-->
     <string name="activity_data_input_fish_caught_main_menu">Menu principal</string>
-    <string-array name="data_input_fish_caught_fish_file_list">
-        <item>fish_new_fish.png</item>
-        <item>fish_pahoro.jpg</item>
-        <item>fish_paati.jpg</item>
-        <item>fish_uhu.jpg</item>
-        <item>fish_tapio.jpg</item>
-        <item>fish_papae.jpg</item>
-        <item>fish_papae2.jpg</item>
-        <item>fish_maito.jpg</item>
-        <item>fish_parai.jpg</item>
-        <item>fish_tarei.jpg</item>
-        <item>fish_ume.png</item>
-        <item>fish_marava.jpg</item>
-        <item>fish_nanue.jpg</item>
-        <item>fish_mara.jpg</item>
-        <item>fish_iihi.jpg</item>
-        <item>fish_apai.jpg</item>
-        <item>fish_mataanaana.jpg</item>
-        <item>fish_ature.jpg</item>
-        <item>fish_paaihere.jpg</item>
-        <item>fish_oeo.jpg</item>
-        <item>fish_mu.jpg</item>
-        <item>fish_roi.jpg</item>
-        <item>fish_tarao.jpg</item>
-        <item>fish_hoa.jpg</item>
-        <item>fish_vete.jpg</item>
-        <item>fish_toau.jpg</item>
-        <item>fish_taivaiva.jpg</item>
-        <item>fish_taea.jpg</item>
-        <item>fish_nape.jpg</item>
-        <item>fish_oiri.jpg</item>
-        <item>fish_paraha.jpg</item>
-    </string-array>
 
     <string-array name="data_input_fish_caught_fish_tahitian_list">
-        <item>Autre poisson</item>
-        <item>Pahoro</item>
-        <item>Paati</item>
-        <item>Uhu, Moreo...</item>
-        <item>Tapio</item>
-        <item>Papae</item>
-        <item>Papae utu roa</item>
-        <item>Maito</item>
-        <item>"Para'i, Oturi..."</item>
-        <item>Tarei</item>
-        <item>Ume</item>
-        <item>"Marava, Pa'aua'ra"</item>
-        <item>Nanue</item>
-        <item>Mara</item>
-        <item>Iihi</item>
-        <item>"Apa'i"</item>
-        <item>"Mata'ana'ana"</item>
+        <item>AUTRE POISSON</item>
         <item>Ature, Aramea, Orare</item>
-        <item>Paaihere, Ruhi, Pu harehare</item>
-        <item>"O'eo"</item>
-        <item>Mu</item>
-        <item>Roi</item>
-        <item>Tarao</item>
+        <item>"Apa'i"</item>
         <item>Hoa</item>
-        <item>Vete, Ahuru, Atiatia</item>
-        <item>"To'au"</item>
-        <item>Taivaiva</item>
-        <item>Taea, Tuhara</item>
+        <item>Iihi</item>
+        <item>Maito</item>
+        <item>Mara</item>
+        <item>"Marava, Pa'aua'ra"</item>
+        <item>"Mata'ana'ana"</item>
+        <item>Mu</item>
+        <item>Nanue</item>
         <item>Nape, Tehu</item>
+        <item>"O'eo"</item>
         <item>"O'iri"</item>
+        <item>Paaihere, Ruhi, Pu harehare</item>
+        <item>Paati</item>
+        <item>Pahoro</item>
+        <item>Papae</item>
         <item>Paraha peue</item>
+        <item>"Para'i, Oturi…"</item>
+        <item>Roi</item>
+        <item>Taea, Tuhara</item>
+        <item>Tarao</item>
+        <item>Tarei</item>
+        <item>"To'au"</item>
+        <item>Ume</item>
+        <item>Vete, Ahuru, Atiatia</item>
     </string-array>
 
     <string-array name="data_input_fish_caught_fish_family_list">
         <item>otherFish</item>
-        <item>Parrotfish IP</item>
-        <item>Parrotfish TP</item>
-        <item>Parrotfish microrhinos</item>
-        <item>Parrotfish lepto</item>
-        <item>Cheilinus sp.</item>
-        <item>Epibulus insidator</item>
-        <item>Ctenochaetus striatus</item>
-        <item>Acanthurus xanthopterus</item>
-        <item>Naso lituratus</item>
-        <item>Naso unicornis</item>
-        <item>Siganus spp.</item>
-        <item>Kyphosus</item>
-        <item>Cheilinus undulatus</item>
-        <item>Myrpristis spp.</item>
-        <item>Sargocentron spp.</item>
-        <item>Heteropriacanthus spp.</item>
         <item>Selar crumenophtalmus</item>
-        <item>Carangidae</item>
-        <item>Lethrinus spp.</item>
-        <item>Monotaxis grandoculis</item>
-        <item>Cephalopholis argus</item>
-        <item>Epinephelus spp.</item>
+        <item>Sargocentron spp.</item>
         <item>Variola louti</item>
-        <item>Mullidae</item>
-        <item>Lutjanus fulvus</item>
-        <item>Lutjanus monostigma</item>
-        <item>Lutjanus gibbus</item>
+        <item>Myrpristis spp.</item>
+        <item>Ctenochaetus striatus</item>
+        <item>Cheilinus undulatus</item>
+        <item>Siganus spp.</item>
+        <item>Heteropriacanthus spp.</item>
+        <item>Monotaxis grandoculis</item>
+        <item>Kyphosus</item>
         <item>Mugilidae</item>
+        <item>Lethrinus spp.</item>
         <item>Balistidae</item>
+        <item>Carangidae</item>
+        <item>Parrotfish TP</item>
+        <item>Parrotfish IP</item>
+        <item>Cheilinus sp.</item>
         <item>Platax</item>
+        <item>Acanthurus xanthopterus</item>
+        <item>Cephalopholis argus</item>
+        <item>Lutjanus gibbus</item>
+        <item>Epinephelus spp.</item>
+        <item>Naso lituratus</item>
+        <item>Lutjanus fulvus</item>
+        <item>Naso unicornis</item>
+        <item>Mullidae</item>
     </string-array>
 </resources>

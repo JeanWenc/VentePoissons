@@ -185,6 +185,8 @@ public class gpsLogger extends Service {
     private void startTracking(long trackId) {
         currentTrackId = trackId;
 
+        isTracking = true;
+
         createLocationRequest();
         getLastLocation();
 
@@ -208,8 +210,6 @@ public class gpsLogger extends Service {
         createNotificationChannel();
         NotificationManagerCompat nmgr = NotificationManagerCompat.from(this);
         nmgr.notify(NOTIFICATION_ID, getNotification());
-
-        isTracking = true;
     }
 
     private void stopTrackingAndSave() {

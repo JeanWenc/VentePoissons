@@ -22,5 +22,9 @@
         android:title="@string/menu_send_data_pic"
         android:icon="@android:drawable/ic_menu_send"
         app:showAsAction="ifRoom" />
-
+    <item
+        android:id="@+id/trackdetail_menu_delete"
+        android:title="@string/menu_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        app:showAsAction="ifRoom" />
 </menu>

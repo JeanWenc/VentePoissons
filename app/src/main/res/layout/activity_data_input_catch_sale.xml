@@ -23,28 +23,6 @@
             style="@android:style/TextAppearance.Large"
             />
 
-        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/activity_data_input_catch_sale_question_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="20dp">
-            <RadioButton android:id="@+id/activity_data_input_catch_sale_question_yes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/answer_yes"
-                style="@android:style/TextAppearance.Medium"
-                android:onClick="onRadioButtonClicked"/>
-
-            <RadioButton android:id="@+id/activity_data_input_catch_sale_question_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/answer_no"
-                style="@android:style/TextAppearance.Medium"
-                android:layout_marginLeft="20dp"
-                android:onClick="onRadioButtonClicked"/>
-        </RadioGroup>
-
         <RelativeLayout
             android:id="@+id/activity_catch_sale_quantity_frame"
             android:layout_width="match_parent"
@@ -96,17 +74,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="40dp"
                 />
-            <Button
-                android:id="@+id/activity_data_input_catch_sale_launch_fish_caught"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:layout_margin="20dp"
-                android:text="@string/data_input_catch_sale_launch_fish_caught"
-                android:layout_below="@id/activity_data_input_catch_sale_input_price"
-                android:layout_toRightOf="@id/activity_data_input_catch_sale_input_type"/>
-
-
 
             <EditText
                 android:id="@+id/activity_data_input_catch_sale_input_details"
@@ -116,29 +83,16 @@
                 android:hint="@string/data_input_catch_sale_question_details"
                 android:imeOptions="flagNoExtractUi"
                 android:layout_below="@id/activity_data_input_catch_sale_input_N"/>
-
-            <TextView
-                android:id="@+id/activity_catch_sale_many_fishers_question"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/data_input_catch_sale_many_fishers_one_rack"
-                android:layout_below="@id/activity_data_input_catch_sale_input_details"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
-                android:textStyle="bold"
-                style="@android:style/TextAppearance.Medium"/>
-
-            <EditText
-                android:id="@+id/activity_data_input_catch_sale_many_fishers_one_rack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/activity_catch_sale_many_fishers_question"
-                android:imeOptions="flagNoExtractUi"
-                android:hint="@string/data_input_catch_sale_many_fishers_one_rack_hint"/>
         </RelativeLayout>
 
-
-
+        <Button
+            android:id="@+id/activity_data_input_catch_sale_launch_fish_caught"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:text="@string/data_input_catch_sale_launch_fish_caught"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 </ScrollView>

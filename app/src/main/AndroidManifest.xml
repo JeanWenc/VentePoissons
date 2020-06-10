@@ -23,10 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.dataInput.dataInputCatchCons"></activity>
-        <activity android:name=".controller.dataInput.dataInputCatchGive" />
+        <activity android:name=".controller.dataInput.dataInputTuiRack" />
         <activity android:name=".controller.dataInput.dataInputFishCaught" />
-        <activity android:name=".controller.dataInput.dataInputCatchOrder" />
         <activity android:name=".controller.dataInput.dataInputCatchSale" />
         <activity android:name=".controller.dataInput.dataInputCrew" />
         <activity android:name=".controller.dataInput.dataInputBoat" />

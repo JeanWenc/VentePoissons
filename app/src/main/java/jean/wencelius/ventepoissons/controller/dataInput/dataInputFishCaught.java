@@ -1,14 +1,14 @@
 package jean.wencelius.ventepoissons.controller.dataInput;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +16,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,22 +23,19 @@ import java.util.List;
 import jean.wencelius.ventepoissons.R;
 import jean.wencelius.ventepoissons.db.ImageFishAdapter;
 import jean.wencelius.ventepoissons.db.TrackContentProvider;
-import jean.wencelius.ventepoissons.model.ImageUrl;
 import jean.wencelius.ventepoissons.recopemValues;
 import jean.wencelius.ventepoissons.utils.FishPickerDialog;
-import jean.wencelius.ventepoissons.utils.MapTileProvider;
 
 public class dataInputFishCaught extends AppCompatActivity implements ImageFishAdapter.OnImageListener{
 
     private TextView mOtherFishIntro;
     private TextView mOtherFishDetail;
 
-    private String [] mFishFileList;
     private ArrayList<String> mFishTahitianList;
     private List<String> mFishFamilyList;
+    private String[] mFishInitialTahitianList;
     private ArrayList<String> mFishCountList;
 
-    public ContentResolver mCr;
     public Cursor mCursorFishCaught;
 
     private int mSelImage;
@@ -51,6 +45,8 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
     private long trackId;
     private String mCatchDestination;
 
+    private Parcelable glmState;
+
     RecyclerView recyclerView;
     GridLayoutManager gridLayoutManager;
 
@@ -58,8 +54,8 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
     private static final String BUNDLE_STATE_FISH_COUNT_LIST = "fishCountList";
     private static final String BUNDLE_STATE_OTHER_CAUGHT_FISH = "otherCaughtFish";
     private static final String BUNDLE_STATE_TAHITIAN_FISH_LIST = "tahitianFishList";
+    private static final String BUNDLE_STATE_LAST_POSITION ="stateLastPosition";
 
-    private ArrayList imageUrlList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +65,7 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
         mOtherFishIntro = (TextView) findViewById(R.id.activity_data_input_fish_caught_other_fish);
         mOtherFishDetail = (TextView) findViewById(R.id.activity_data_input_fish_caught_other_fish_detail);
 
-        mFishFileList = getResources().getStringArray(R.array.data_input_fish_caught_fish_file_list);
+        mFishInitialTahitianList = getResources().getStringArray(R.array.data_input_fish_caught_fish_tahitian_list);
         mFishFamilyList = Arrays.asList(getResources().getStringArray(R.array.data_input_fish_caught_fish_family_list));
 
         if(savedInstanceState!=null){
@@ -79,13 +75,15 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
             mFishCountList = new ArrayList<String>(Arrays.asList(savedInstanceState.getStringArray(BUNDLE_STATE_FISH_COUNT_LIST)));
             mFishTahitianList = new ArrayList<String>(Arrays.asList(savedInstanceState.getStringArray(BUNDLE_STATE_TAHITIAN_FISH_LIST)));
             mOtherCaughtFish = savedInstanceState.getString(BUNDLE_STATE_OTHER_CAUGHT_FISH);
+            glmState = savedInstanceState.getParcelable(BUNDLE_STATE_LAST_POSITION);
         }else{
             trackId = getIntent().getExtras().getLong(TrackContentProvider.Schema.COL_TRACK_ID);
             mCatchDestination = getIntent().getExtras().getString(recopemValues.BUNDLE_EXTRA_CATCH_DESTINATION);
             mFishTahitianList = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.data_input_fish_caught_fish_tahitian_list)));
             mSelImage = -1;
+            glmState = null;
 
-            mFishCountList = new ArrayList<String>(Arrays.asList(new String[mFishFileList.length]));
+            mFishCountList = new ArrayList<String>(Arrays.asList(new String[mFishInitialTahitianList.length]));
             populateFishCountList();
         }
 
@@ -105,8 +103,6 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
         gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(gridLayoutManager);
 
-        imageUrlList = prepareData(mFishFileList);
-
         setFishAdapter();
     }
 
@@ -116,6 +112,8 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
         outState.putString(recopemValues.BUNDLE_EXTRA_CATCH_DESTINATION,mCatchDestination);
         outState.putInt(BUNDLE_STATE_LAST_SELECTED_IMAGE,mSelImage);
         outState.putString(BUNDLE_STATE_OTHER_CAUGHT_FISH,mOtherCaughtFish);
+        glmState = gridLayoutManager.onSaveInstanceState();
+        outState.putParcelable(BUNDLE_STATE_LAST_POSITION,glmState);
 
         String [] fishCountListArray = new String[mFishCountList.size()];
         fishCountListArray = mFishCountList.toArray(fishCountListArray);
@@ -154,6 +152,9 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
 
         mSelImage = position;
 
+        String mFishTahitian = mFishTahitianList.get(position);
+        String mFishFamily = mFishFamilyList.get(position);
+
         if(mSelImage == 0){
             FragmentManager fm = getSupportFragmentManager();
             FishPickerDialog alertDialog = FishPickerDialog.newInstance(mSelImage,mFishFamilyList.get(position),mFishTahitianList.get(position),(long) trackId,mCatchDestination);
@@ -170,9 +171,36 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
 
             if(tempCatchN>3){
                 mFishCountList.set(mSelImage,"0");
+                tempCatchN = 0;
             }else{
                 mFishCountList.set(mSelImage,Integer.toString(tempCatchN));
             }
+
+            String selectionIn = TrackContentProvider.Schema.COL_CATCH_DESTINATION + " = ? AND " + TrackContentProvider.Schema.COL_FISH_TAHITIAN + " = ?";
+            String [] selectionArgsList = new String [] {mCatchDestination, mFishTahitian};
+            mCursorFishCaught = getContentResolver().query(TrackContentProvider.poissonsUri(trackId), null,
+                    selectionIn, selectionArgsList, TrackContentProvider.Schema.COL_ID + " asc");
+
+            boolean isCursorNotEmpty = mCursorFishCaught.moveToFirst();
+
+            mCursorFishCaught.close();
+
+            if(isCursorNotEmpty){
+                ContentValues valuesToUpdate = new ContentValues();
+                valuesToUpdate.put(TrackContentProvider.Schema.COL_CATCH_N,Integer.toString(tempCatchN));
+                getContentResolver().update(TrackContentProvider.poissonsUri(trackId),valuesToUpdate,selectionIn,selectionArgsList);
+            }else{
+                ContentValues values = new ContentValues();
+                values.put(TrackContentProvider.Schema.COL_TRACK_ID,trackId);
+                values.put(TrackContentProvider.Schema.COL_CATCH_DESTINATION,mCatchDestination);
+                values.put(TrackContentProvider.Schema.COL_FISH_FAMILY,mFishFamily);
+                values.put(TrackContentProvider.Schema.COL_FISH_TAHITIAN,mFishTahitian);
+                values.put(TrackContentProvider.Schema.COL_CATCH_N,Integer.toString(tempCatchN));
+
+                getContentResolver().insert(TrackContentProvider.poissonsUri(trackId),values);
+            }
+
+            glmState = gridLayoutManager.onSaveInstanceState();
 
             setFishAdapter();
         }
@@ -181,10 +209,9 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
     private void populateFishCountList() {
         mOtherCaughtFish =  "";
 
-        mCr = getContentResolver();
         String selectionIn = TrackContentProvider.Schema.COL_CATCH_DESTINATION + " = ?";
         String [] selectionArgsList = {mCatchDestination};
-        mCursorFishCaught = mCr.query(TrackContentProvider.poissonsUri(trackId), null,
+        mCursorFishCaught = getContentResolver().query(TrackContentProvider.poissonsUri(trackId), null,
                 selectionIn, selectionArgsList, TrackContentProvider.Schema.COL_ID + " asc");
 
         if(mCursorFishCaught.moveToFirst()){
@@ -213,31 +240,17 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
         mCursorFishCaught.close();
     }
 
-    private ArrayList prepareData(String [] fishFileList) {
-
-        ArrayList imageUrlList = new ArrayList<>();
-
-        for(int i = 0; i < fishFileList.length; i++) {
-            File thisImage =null;
-            try {
-                thisImage = MapTileProvider.getFileFromAssets(fishFileList[i], getApplicationContext());
-                ImageUrl imageUrl = new ImageUrl();
-                imageUrl.setImageUrl(thisImage.getAbsolutePath());
-                imageUrlList.add(imageUrl);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return imageUrlList;
-    }
-
     private void setFishAdapter() {
-        List<String> subArr = mFishCountList.subList(0,mFishFileList.length);
+        List<String> subArr = mFishCountList.subList(0,mFishInitialTahitianList.length);
         String [] fishCountList = new String[subArr.size()];
         fishCountList = subArr.toArray(fishCountList);
 
-        ImageFishAdapter imageFishAdapter = new ImageFishAdapter(getApplicationContext(), imageUrlList, fishCountList, this);
+        ImageFishAdapter imageFishAdapter = new ImageFishAdapter(getApplicationContext(), mFishInitialTahitianList, fishCountList, this);
         recyclerView.setAdapter(imageFishAdapter);
+        if(glmState!=null){
+            gridLayoutManager.onRestoreInstanceState(glmState);
+        }
+
     }
 
     public void setMyCaughtFish(String fishTahitian, int catchN, String catchType) {
@@ -252,9 +265,9 @@ public class dataInputFishCaught extends AppCompatActivity implements ImageFishA
 
         mOtherCaughtFish="";
         String otherCaughtFish="";
-        for(int i = mFishFileList.length;i < mFishCountList.size();i++){
+        for(int i =mFishInitialTahitianList.length;i < mFishCountList.size();i++){
             otherCaughtFish = mFishTahitianList.get(i) + " = " + mFishCountList.get(i);
-            if(i>mFishFileList.length) otherCaughtFish = "\n" + otherCaughtFish;
+            if(i>mFishInitialTahitianList.length) otherCaughtFish = "\n" + otherCaughtFish;
             mOtherCaughtFish+=otherCaughtFish;
         }
 

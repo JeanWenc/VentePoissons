@@ -34,7 +34,6 @@ public class dataInputGear extends AppCompatActivity {
     private String mOtherDetail;
 
     private long trackId;
-    private boolean mNewPicAdded;
     private boolean showNext;
 
     private static final String BUNDLE_STATE_GEAR = "gear";
@@ -69,10 +68,8 @@ public class dataInputGear extends AppCompatActivity {
             showNext = savedInstanceState.getBoolean(recopemValues.BUNDLE_STATE_BUTTON);
 
             trackId = savedInstanceState.getLong(recopemValues.BUNDLE_STATE_TRACK_ID);
-            mNewPicAdded = savedInstanceState.getBoolean(recopemValues.BUNDLE_STATE_NEW_PIC_ADDED);
         }else{
             trackId = getIntent().getExtras().getLong(TrackContentProvider.Schema.COL_TRACK_ID);
-            mNewPicAdded = getIntent().getExtras().getBoolean(TrackContentProvider.Schema.COL_PIC_ADDED);
 
             Cursor mTrackCursor = getContentResolver().query(ContentUris.withAppendedId(TrackContentProvider.CONTENT_URI_TRACK,trackId),null,null,null,null);
             mTrackCursor.moveToPosition(0);
@@ -162,7 +159,6 @@ public class dataInputGear extends AppCompatActivity {
         outState.putBoolean(recopemValues.BUNDLE_STATE_BUTTON,showNext);
 
         outState.putLong(recopemValues.BUNDLE_STATE_TRACK_ID,trackId);
-        outState.putBoolean(recopemValues.BUNDLE_STATE_NEW_PIC_ADDED,mNewPicAdded);
 
         super.onSaveInstanceState(outState);
     }
@@ -300,7 +296,6 @@ public class dataInputGear extends AppCompatActivity {
 
                 Intent NextIntent = new Intent(dataInputGear.this, dataInputBoat.class);
                 NextIntent.putExtra(TrackContentProvider.Schema.COL_TRACK_ID, trackId);
-                NextIntent.putExtra(TrackContentProvider.Schema.COL_PIC_ADDED, mNewPicAdded);
                 startActivity(NextIntent);
                 break;
         }

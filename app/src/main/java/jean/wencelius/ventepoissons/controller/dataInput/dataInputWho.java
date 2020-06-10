@@ -24,6 +24,9 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 
 import jean.wencelius.ventepoissons.R;
 import jean.wencelius.ventepoissons.db.TrackContentProvider;
@@ -97,13 +100,21 @@ public class dataInputWho extends AppCompatActivity implements AdapterView.OnIte
                 null,null,null,TrackContentProvider.Schema.COL_FISHER_NAME + " asc");
 
         fisherNames.clear();
-        fisherNames.add(NO_OLD_FISHER);
-
         if(fisherCursor.getCount()>0){
             while(fisherCursor.moveToNext()){
-                fisherNames.add(fisherCursor.getString(fisherCursor.getColumnIndex(TrackContentProvider.Schema.COL_FISHER_NAME)));
+                String tempNewFisher = fisherCursor.getString(fisherCursor.getColumnIndex(TrackContentProvider.Schema.COL_FISHER_NAME));
+                if(!fisherNames.contains(tempNewFisher)){
+                    fisherNames.add(tempNewFisher);
+                }
             }
+            Collections.sort(fisherNames, new Comparator<String>() {
+                @Override
+                public int compare(String s1, String s2) {
+                    return s1.compareTo(s2);
+                }
+            });
         }
+        fisherNames.add(0,NO_OLD_FISHER);
 
         fisherCursor.close();
 

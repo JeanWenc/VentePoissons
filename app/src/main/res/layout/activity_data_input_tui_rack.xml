@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".controller.dataInput.dataInputTuiRack">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/activity_data_input_tui_rack_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/data_input_tui_rack_question"
+            android:textStyle="bold"
+            style="@android:style/TextAppearance.Large"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/activity_data_input_tui_rack_question_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp">
+            <RadioButton android:id="@+id/activity_data_input_tui_rack_question_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/answer_yes"
+                style="@android:style/TextAppearance.Medium"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton android:id="@+id/activity_data_input_tui_rack_question_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/answer_no"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_marginLeft="20dp"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/activity_data_input_tui_rack_detail_frame">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/data_input_tui_rack_prompt"
+                android:textStyle="bold"
+                style="@android:style/TextAppearance.Large"
+                />
+
+            <EditText
+                android:id="@+id/activity_data_input_tui_rack_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                style="@android:style/TextAppearance.Medium"
+                android:hint="@string/data_input_tui_rack_hint"
+                android:imeOptions="flagNoExtractUi"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -156,7 +156,7 @@ public class MenuActivity extends AppCompatActivity {
 
         long trackId = ContentUris.parseId(trackUri);
 
-        String defImage = "android.resource://jean.wencelius.traceurrecopem/drawable/add_picture";
+        String defImage = "android.resource://jean.wencelius.ventepoissons/drawable/add_picture";
 
         ContentValues picVal = new ContentValues();
         picVal.put(TrackContentProvider.Schema.COL_TRACK_ID,trackId);

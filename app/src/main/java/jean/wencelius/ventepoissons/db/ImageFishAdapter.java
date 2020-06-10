@@ -22,15 +22,15 @@ import jean.wencelius.ventepoissons.model.ImageUrl;
  * Created by Jean Wencélius on 12/05/2020.
  */
 public class ImageFishAdapter  extends RecyclerView.Adapter<ImageFishAdapter.ViewHolder> {
-    private ArrayList<ImageUrl> imageUrls;
+    private String [] fishNames;
     private Context context;
     private ImageFishAdapter.OnImageListener mOnImageListener;
     private String[] fishCount;
 
-    public ImageFishAdapter(Context context, ArrayList<ImageUrl> imageUrls, String[] fishCount,ImageFishAdapter.OnImageListener onImageListener) {
+    public ImageFishAdapter(Context context, String[] fishNames, String[] fishCount,ImageFishAdapter.OnImageListener onImageListener) {
         this.context = context;
         this.mOnImageListener = onImageListener;
-        this.imageUrls = imageUrls;
+        this.fishNames = fishNames;
         this.fishCount = fishCount;
     }
 
@@ -49,16 +49,8 @@ public class ImageFishAdapter  extends RecyclerView.Adapter<ImageFishAdapter.Vie
     @Override
     public void onBindViewHolder(ImageFishAdapter.ViewHolder viewHolder, int i) {
 
-        String imagePath = imageUrls.get(i).getImageUrl();
-        Uri imageUri = null;
-        if(!imagePath.equals("android.resource://jean.wencelius.traceurrecopem/drawable/add_image")){
-            File file = new File(imagePath);
-            imageUri = Uri.fromFile(file);
-        }else{
-            imageUri = Uri.parse(imagePath);
-        }
+        viewHolder.name.setText(fishNames[i]);
 
-        Glide.with(context).load(imageUri).into(viewHolder.img);
         if(fishCount[i]!=null){
             viewHolder.text.setText(fishCount[i]);
         }else{
@@ -68,18 +60,18 @@ public class ImageFishAdapter  extends RecyclerView.Adapter<ImageFishAdapter.Vie
 
     @Override
     public int getItemCount() {
-        return imageUrls.size();
+        return fishNames.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView img;
+        TextView name;
         TextView text;
         ImageFishAdapter.OnImageListener onImageListener;
 
         public ViewHolder(View view, ImageFishAdapter.OnImageListener onImageListener) {
             super(view);
-            img = view.findViewById(R.id.image_fish_item_id);
+            name = view.findViewById(R.id.image_fish_item_name);
             text = view.findViewById(R.id.image_fish_item_tv);
 
             this.onImageListener = onImageListener;
@@ -97,4 +89,3 @@ public class ImageFishAdapter  extends RecyclerView.Adapter<ImageFishAdapter.Vie
         void onImageClick(int position);
     }
 }
-

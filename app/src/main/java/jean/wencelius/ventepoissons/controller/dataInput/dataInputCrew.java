@@ -183,7 +183,7 @@ public class dataInputCrew extends AppCompatActivity implements NumberPicker.OnV
 
                 getContentResolver().update(trackUri, crewValues, null, null);
 
-                Intent NextIntent = new Intent(dataInputCrew.this, dataInputCatchSale.class);
+                Intent NextIntent = new Intent(dataInputCrew.this, dataInputTuiRack.class);
                 NextIntent.putExtra(TrackContentProvider.Schema.COL_TRACK_ID, trackId);
                 startActivity(NextIntent);
                 break;

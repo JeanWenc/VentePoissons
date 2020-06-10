@@ -33,7 +33,7 @@ public class recopemValues {
     public final static String INTENT_KEY_UUID = "uuid";
 
     //TODO:
-    public static final String TOT_NB_QUESTIONS = "9";
+    public static final String TOT_NB_QUESTIONS = "7";
 
     public static final String PREF_KEY_FISHER_NAME = "PREF_KEY_FISHER_NAME";
     public static final String PREF_KEY_FISHER_ID = "PREF_KEY_FISHER_ID";

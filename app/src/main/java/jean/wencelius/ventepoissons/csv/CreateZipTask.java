@@ -48,8 +48,9 @@ public abstract class CreateZipTask extends AsyncTask<Void, Long, Boolean> {
         this.zipExportDirectory = new File(saveDir);
         this.fileList = zipExportDirectory.listFiles();
 
-        String startDateYearMonthDay = saveDir.substring(saveDir.length()-19);
-        this.startDateYearMonthDay = startDateYearMonthDay.substring(0,10);
+        this.startDateYearMonthDay = saveDir.substring(saveDir.length()-19);
+        //String startDateYearMonthDay = saveDir.substring(saveDir.length()-19);
+        //this.startDateYearMonthDay = startDateYearMonthDay.substring(0,10);
     }
 
     @Override

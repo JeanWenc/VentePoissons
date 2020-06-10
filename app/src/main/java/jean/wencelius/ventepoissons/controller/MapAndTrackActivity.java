@@ -136,10 +136,7 @@ public class MapAndTrackActivity extends AppCompatActivity {
         outState.putDouble(recopemValues.BUNDLE_STATE_CURRENT_ZOOM, mMap.getZoomLevelDouble());
         outState.putDouble(recopemValues.BUNDLE_STATE_CURRENT_LATITUDE, mMap.getMapCenter().getLatitude());
         outState.putDouble(recopemValues.BUNDLE_STATE_CURRENT_LONGITUDE, mMap.getMapCenter().getLongitude());
-        if (mGpsLogger != null) {
-            outState.putBoolean(STATE_IS_TRACKING, mGpsLogger.isTracking());
-        }
-        //outState.putInt(BUNDLE_STATE_MLINE_INDEX,mLineIndex);
+
         super.onSaveInstanceState(outState);
     }
 
@@ -296,11 +293,8 @@ public class MapAndTrackActivity extends AppCompatActivity {
     }
 
     private void stopTrackLoggerForNewTrack() {
-        System.out.println("TrackRecordingStopped");
-        if (mGpsLogger.isTracking()) {
-            Intent intent = new Intent(recopemValues.INTENT_STOP_TRACKING);
-            sendBroadcast(intent);
-        }
+        Intent intent = new Intent(recopemValues.INTENT_STOP_TRACKING);
+        sendBroadcast(intent);
     }
 
     public void UpdatePointCount(){
