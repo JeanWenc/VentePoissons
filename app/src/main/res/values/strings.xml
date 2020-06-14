@@ -101,7 +101,7 @@
     <string name="data_input_when_question_yesterday_day">Hier Journée</string>
     <string name="data_input_when_question_last_night">Hier Soir</string>
     <string name="data_input_when_where_question">Où es-tu parti pêcher (village) ?</string>
-    <string name="data_input_when_habitat_question">Quel type de spot ?</string>
+    <string name="data_input_when_habitat_question">Dedans / Dehors / Passe ?</string>
     <string name="data_input_when_habitat_fore_reef">Dehors (Tua)</string>
     <string name="data_input_when_habitat_pass">Passe (Ava)</string>
     <string name="data_input_when_habitat_lagoon">"Dedans"</string>
