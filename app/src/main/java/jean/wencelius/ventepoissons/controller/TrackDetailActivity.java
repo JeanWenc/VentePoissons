@@ -224,7 +224,8 @@ public class TrackDetailActivity extends AppCompatActivity implements ImageAdapt
         if(position==0) {
             getNewPictures(REQUEST_BROWSE_PHOTO);
         }else{
-            Cursor c = mCursorPictures;
+            Cursor c = getContentResolver().query(TrackContentProvider.picturesUri(trackId), null,
+                    null, null, TrackContentProvider.Schema.COL_ID + " asc");
             c.moveToPosition(position);
 
             String imagePath = c.getString(c.getColumnIndex(TrackContentProvider.Schema.COL_PIC_PATH));
