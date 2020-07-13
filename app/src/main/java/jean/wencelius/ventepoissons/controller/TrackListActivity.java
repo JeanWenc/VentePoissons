@@ -1,16 +1,23 @@
 package jean.wencelius.ventepoissons.controller;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import java.io.File;
 
 import jean.wencelius.ventepoissons.R;
 import jean.wencelius.ventepoissons.db.TrackContentProvider;
@@ -37,13 +44,40 @@ public class TrackListActivity extends ListActivity{
 
     @Override
     protected void onResume() {
+        String [] selArgs = new String [] {"confirmed"};
         Cursor cursor = getContentResolver().query(
-                TrackContentProvider.CONTENT_URI_TRACK, null, null, null,
+                TrackContentProvider.CONTENT_URI_TRACK, null, TrackContentProvider.Schema.COL_SENT_EMAIL + " != ?",selArgs,
                 TrackContentProvider.Schema.COL_START_DATE + " desc");
 
         startManagingCursor(cursor);
         setListAdapter(new TrackListAdapter(TrackListActivity.this, cursor));
         getListView().setEmptyView(findViewById(R.id.activity_tracklist_empty));  // undo change from onPause
+
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                final long thisTrackId = id;
+                new AlertDialog.Builder(TrackListActivity.this)
+                        .setTitle(R.string.activity_track_detail_delete_dialog_title)
+                        .setMessage(getResources().getString(R.string.activity_track_detail_delete_dialog_message))
+                        .setCancelable(true)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteTrack(thisTrackId);
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }).create().show();
+                return true;
+            }
+        });
 
         super.onResume();
     }
@@ -93,6 +127,39 @@ public class TrackListActivity extends ListActivity{
         startActivity(TrackDetailIntent);
 
         Toast.makeText(this, "Vendeur # "+Long.toString(id), Toast.LENGTH_SHORT).show();
+    }
+
+    private void deleteTrack(long trackId){
+        Uri trackUri = ContentUris.withAppendedId(TrackContentProvider.CONTENT_URI_TRACK, trackId);
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TrackContentProvider.Schema.COL_SENT_EMAIL,"confirmed");
+        getContentResolver().update(trackUri, contentValues, null, null);
+
+        Cursor cursor = getContentResolver().query(
+                trackUri,
+                null, null, null, null);
+        cursor.moveToPosition(0);
+        String saveDir = cursor.getString(cursor.getColumnIndex(TrackContentProvider.Schema.COL_DIR));
+        cursor.close();
+
+        // Delete any data stored for the track we're deleting
+        if(saveDir!=null){
+            File trackStorageDirectory = new File(saveDir);
+            if (trackStorageDirectory.exists()) {
+                boolean deleted = false;
+
+                //If it's a directory and we should delete it recursively, try to delete all childs
+                if(trackStorageDirectory.isDirectory()){
+                    for(File child:trackStorageDirectory.listFiles()){
+                        //deleted = child.delete();
+                        child.delete();
+                    }
+                }
+                //deleted = trackStorageDirectory.delete();
+                trackStorageDirectory.delete();
+            }
+        }
     }
 
     @Override
