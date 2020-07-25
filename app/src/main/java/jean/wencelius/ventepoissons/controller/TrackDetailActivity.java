@@ -303,10 +303,6 @@ public class TrackDetailActivity extends AppCompatActivity implements ImageAdapt
                             dialog.cancel();
                         }
                     }).create().show();
-
-                    Intent TrackListActivityIntent = new Intent(TrackDetailActivity.this,TrackListActivity.class);
-                    startActivity(TrackListActivityIntent);
-                    finish();
                 }
                 break;
 
@@ -321,6 +317,9 @@ public class TrackDetailActivity extends AppCompatActivity implements ImageAdapt
                             public void onClick(DialogInterface dialog, int which) {
                                 deleteTrack(trackId);
                                 dialog.dismiss();
+                                Intent TrackListActivityIntent = new Intent(TrackDetailActivity.this,TrackListActivity.class);
+                                startActivity(TrackListActivityIntent);
+                                finish();
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

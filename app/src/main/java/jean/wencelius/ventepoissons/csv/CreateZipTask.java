@@ -40,7 +40,6 @@ public abstract class CreateZipTask extends AsyncTask<Void, Long, Boolean> {
     //protected abstract File getExportDirectory(String startDate) throws ExportTrackException;
 
     static final int BUFFER = 2048;
-    static final int ZIP_MAX_SIZE = 10000;
 
     public CreateZipTask(Context context, String saveDir) {
         this.context = context;
@@ -111,53 +110,35 @@ public abstract class CreateZipTask extends AsyncTask<Void, Long, Boolean> {
         }
 
         //Calculate total file size and determine number of needed zip archive to stay under 10000
-        int file_size = 0;
-        for(int i=0; i < fileList.length; i++){
-            file_size+= Integer.parseInt(String.valueOf(fileList[i].length()/1024));
-        }
-        int n_zip = (int) Math.floor(file_size/ZIP_MAX_SIZE)+1;
-
-
-        File [] _zipFile = new File[n_zip];
-        for(int i=0;i<n_zip;i++){
-            _zipFile[i] = new File(zipExportDirectory,startDateYearMonthDay + Integer.toString(i) + DataHelper.EXTENSION_ZIP);
-        }
+        File _zipFile = new File(zipExportDirectory,startDateYearMonthDay + DataHelper.EXTENSION_ZIP);
 
         int fileCount = 0;
 
-        for(int j =0; j<n_zip;j++){
-            try  {
-                BufferedInputStream origin = null;
-                FileOutputStream dest = new FileOutputStream(_zipFile[j]);
-                ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
+        try  {
+            BufferedInputStream origin = null;
+            FileOutputStream dest = new FileOutputStream(_zipFile);
+            ZipOutputStream out = new ZipOutputStream(new BufferedOutputStream(dest));
 
-                byte[] data = new byte[BUFFER];
+            byte[] data = new byte[BUFFER];
 
-                int jFileSize = 0;
+            while(fileCount < fileList.length) {
+                publishProgress((long) fileCount);
+                String iFile = fileList[fileCount].getAbsolutePath();
 
-                while(fileCount < fileList.length) {
-                    publishProgress((long) fileCount);
-                    String iFile = fileList[fileCount].getAbsolutePath();
-                    jFileSize+=Integer.parseInt(String.valueOf(fileList[fileCount].length()/1024));
-                    if(jFileSize<ZIP_MAX_SIZE){
-                        FileInputStream fi = new FileInputStream(iFile);
-                        origin = new BufferedInputStream(fi, BUFFER);
-                        ZipEntry entry = new ZipEntry(iFile.substring(iFile.lastIndexOf("/") + 1));
-                        out.putNextEntry(entry);
-                        int count;
-                        while ((count = origin.read(data, 0, BUFFER)) != -1) {
-                            out.write(data, 0, count);
-                        }
-                        fileCount++;
-                        origin.close();
-                    }else{
-                        break;
-                    }
+                FileInputStream fi = new FileInputStream(iFile);
+                origin = new BufferedInputStream(fi, BUFFER);
+                ZipEntry entry = new ZipEntry(iFile.substring(iFile.lastIndexOf("/") + 1));
+                out.putNextEntry(entry);
+                int count;
+                while ((count = origin.read(data, 0, BUFFER)) != -1) {
+                    out.write(data, 0, count);
                 }
-                out.close();
-            } catch(Exception e) {
-                e.printStackTrace();
+                fileCount++;
+                origin.close();
             }
+            out.close();
+        } catch(Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -175,7 +156,6 @@ public abstract class CreateZipTask extends AsyncTask<Void, Long, Boolean> {
             String subject = "";
             String message = "";
             String fisher = AppPreferences.getDefaultsString(recopemValues.PREF_KEY_FISHER_ID,context);
-
 
             for(int i=0;i<zipArchiveList.length;i++){
                 String archiveN = Integer.toString(i+1)+ "/"+Integer.toString(zipArchiveList.length);
